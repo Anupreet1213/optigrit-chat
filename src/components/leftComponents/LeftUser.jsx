@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import SelectionContext from "../../context/selectionContext";
+import { userInfo } from "./userInfo";
 
 const LeftUser = ({ user, id }) => {
   const { setRightSwitchValue } = useContext(SelectionContext);
@@ -9,9 +10,11 @@ const LeftUser = ({ user, id }) => {
       onClick={() => setRightSwitchValue(id)}
     >
       <img src={user.dp} alt="user" className="w-12 h-12 rounded-[50%]" />
-      <div className="flex flex-col ">
+      <div className="flex flex-col">
         <span className="text-lg">{user.name}</span>
-        <span className="text-gray-500 text-sm">{user.message}</span>
+        <span className="text-gray-500 text-sm">
+          {userInfo[id].chatMessage[userInfo[id].chatMessage.length - 1].str}
+        </span>
       </div>
     </div>
   );

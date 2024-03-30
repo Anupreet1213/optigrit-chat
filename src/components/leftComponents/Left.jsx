@@ -1,17 +1,22 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import LeftHeader from "./LeftHeader";
 import LeftUser from "./LeftUser";
 import { userInfo } from "./userInfo";
+import SelectionContext from "../../context/selectionContext";
 
 const Left = () => {
   const [searchText, setSearchText] = useState(null);
+  const { rightSwitchValue } = useContext(SelectionContext);
 
   const handleSearch = (e) => {
     setSearchText(e.target.value);
-    console.log(searchText);
   };
   return (
-    <div className="w-4/12 p-4 overflow-scroll bg-gray-950">
+    <div
+      className={`sm:w-4/12 p-4 overflow-scroll bg-gray-950 ${
+        rightSwitchValue === -1 ? "w-full" : "sm:block hidden"
+      }`}
+    >
       <LeftHeader name={"heelo"} />
       <input
         value={searchText}

@@ -9,7 +9,11 @@ function App() {
     <SelectionContext.Provider
       value={{ rightSwitchValue: rightSwitchValue, setRightSwitchValue }}
     >
-      <main className="w-screen h-screen flex bg-gray-900 text-white">
+      <main
+        className={`w-screen h-screen flex bg-gray-900 text-white overflow-hidden ${
+          rightSwitchValue === -1 ? "" : ""
+        }`}
+      >
         <Left />
         <Right />
       </main>
