@@ -4,7 +4,7 @@ export default {
   theme: {
     extend: {
       backgroundImage: {
-        "main-pattern": "url('./src/assets/pattern.png')",
+        "main-pattern": "url('../src/assets/pattern.png')",
       },
     },
   },
