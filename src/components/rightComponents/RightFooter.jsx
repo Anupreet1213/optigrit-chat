@@ -3,7 +3,7 @@ import { IoSend } from "react-icons/io5";
 import { userInfo } from "../leftComponents/userInfo";
 import SelectionContext from "../../context/selectionContext";
 
-const RightFooter = () => {
+const RightFooter = ({ setLocalChatMessage }) => {
   const [message, setMessage] = useState(null);
   const { rightSwitchValue } = useContext(SelectionContext);
 
@@ -13,6 +13,14 @@ const RightFooter = () => {
         str: message,
         type: "sender",
       });
+      setLocalChatMessage(message);
+      const getLocalItem = JSON.parse(localStorage.getItem(rightSwitchValue));
+      getLocalItem.push({
+        str: message,
+        type: "sender",
+      });
+      localStorage.setItem(rightSwitchValue, JSON.stringify(getLocalItem));
+      setMessage("");
     }
   };
 
